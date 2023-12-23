@@ -1,8 +1,7 @@
-package ru.training.mc.core.api.service.monitoring.servive.impl;
+package ru.training.mc.core.api.service.monitoring.service.impl;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
-import ru.training.mc.core.api.service.MonitoringService;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.service;
+package ru.training.mc.core.api.service.monitoring.service.impl;
 
 import org.springframework.stereotype.Service;
 
