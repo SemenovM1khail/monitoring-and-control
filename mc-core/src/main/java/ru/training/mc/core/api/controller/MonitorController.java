@@ -3,16 +3,13 @@ package ru.training.mc.core.api.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.training.mc.core.api.service.monitoring.service.impl.MonitoringService;
 
 @RestController
-@RequestMapping("/api/monitor/current")
+@RequestMapping("/api/monitor/")
 @AllArgsConstructor
-public class Controller {
+public class MonitorController {
 
     private final MonitoringService monitoringService;
 
