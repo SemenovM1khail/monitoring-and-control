@@ -1,13 +1,13 @@
-package ru.training.mcgateway;
+package ru.training.mc.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class McGatewayApplication {
+public class McCoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(McGatewayApplication.class, args);
+        SpringApplication.run(McCoreApplication.class, args);
     }
 
 }

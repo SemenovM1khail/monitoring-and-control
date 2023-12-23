@@ -1,13 +1,13 @@
-package ru.training.mccore;
+package ru.training.mc.archive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class McCoreApplication {
+public class McArchiveApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(McCoreApplication.class, args);
+        SpringApplication.run(McArchiveApplication.class, args);
     }
 
 }

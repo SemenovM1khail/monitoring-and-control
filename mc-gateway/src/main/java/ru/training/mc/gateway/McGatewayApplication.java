@@ -1,13 +1,13 @@
-package ru.training.mcarchive;
+package ru.training.mc.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class McArchiveApplication {
+public class McGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(McArchiveApplication.class, args);
+        SpringApplication.run(McGatewayApplication.class, args);
     }
 
 }
