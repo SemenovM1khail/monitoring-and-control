@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ModbusFacade implements DisposableBean {
     private ModbusMaster modBus;
-    private final Integer deviceAddress;
+    private final Integer slaveAddress;
 
 
     ModbusFacade(@Value("${api.modbus.portname}") String portName,
-                 @Value("${api.modbus.device.address}") Integer deviceAddress) {
-        this.deviceAddress = deviceAddress;
+                 @Value("${api.modbus.device.address}") Integer slaveAddress) {
+        this.slaveAddress = slaveAddress;
         try {
             SerialUtils.setSerialPortFactory(new SerialPortFactoryPJC());
             SerialParameters sp = new SerialParameters();
@@ -36,7 +36,7 @@ public class ModbusFacade implements DisposableBean {
 
         try {
             registerValue = modBus.readHoldingRegisters(
-                    deviceAddress, registerAddress, 1)[0];
+                    slaveAddress, registerAddress, 1)[0];
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -45,10 +45,17 @@ public class ModbusFacade implements DisposableBean {
         return registerValue;
     }
 
-
+    public void writeRegister(int address, int data) {
+        try {
+            modBus.writeSingleRegister(slaveAddress, address, data);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         try {
             modBus.disconnect();
         }
