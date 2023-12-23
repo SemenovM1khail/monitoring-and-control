@@ -24,11 +24,11 @@ public class ModbusMonitoringService implements MonitoringService {
 
     @Override
     public Float getPressureInMmHg() {
-        return modbusFacade.readRegister(5) * 0.75f;
+        return modbusFacade.readRegister(5) * 0.075f;
     }
 
     @Override
     public Float getPressureInPa() {
-        return modbusFacade.readRegister(5) * 100f;
+        return modbusFacade.readRegister(5) * 10f;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.training.mc.core.api.service.monitoring.service.impl.MonitoringService;
 
 @RestController
-@RequestMapping("/api/monitor/")
+@RequestMapping("/api/monitor/current")
 @AllArgsConstructor
 public class MonitorController {
 
