@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.service.modbus.facade;
+package ru.training.mc.core.api.services.modbus.facade;
 
 import com.intelligt.modbus.jlibmodbus.master.ModbusMaster;
 import com.intelligt.modbus.jlibmodbus.master.ModbusMasterFactory;

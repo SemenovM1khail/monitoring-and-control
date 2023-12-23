@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.service.control.service.impl;
+package ru.training.mc.core.api.services.control.service.impl;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
