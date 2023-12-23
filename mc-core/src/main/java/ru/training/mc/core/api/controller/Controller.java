@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.training.mc.core.api.service.MonitoringService;
+import ru.training.mc.core.api.service.monitoring.service.impl.MonitoringService;
 
 @RestController
 @RequestMapping("/api/monitor/current")
