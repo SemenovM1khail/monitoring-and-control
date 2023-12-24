@@ -25,5 +25,4 @@ public class FakeControlServiceTest {
                         () -> assertEquals(fakeControlService.getRegisterValue(index), registerValue)
                 ));
     }
-
 }

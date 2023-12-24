@@ -40,7 +40,8 @@ class ControlControllerTest {
             inMemoryRegisters[invocation
                     .getArgument(0, Integer.class)]
                     = invocation.getArgument(1, Integer.class);
-            return null; })
+            return null;
+        })
                 .when(controlService)
                 .setRegisterValue(Mockito.anyInt(), Mockito.anyInt());
 
