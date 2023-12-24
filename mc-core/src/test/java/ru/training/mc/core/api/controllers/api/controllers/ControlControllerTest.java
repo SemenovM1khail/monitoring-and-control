@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.controllers;
+package ru.training.mc.core.api.controllers.api.controllers;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,12 +9,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import ru.training.mc.core.api.controllers.ControlController;
 import ru.training.mc.core.api.services.control.service.impl.ControlService;
-import ru.training.mc.core.api.dto.IntegerDto;
+import ru.training.mc.core.api.controllers.dto.IntegerDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,7 +52,9 @@ class ControlControllerTest {
 
         responseEntityList.forEach(Assertions::assertNotNull);
         responseEntityList.forEach(responseEntity ->
-                assertEquals(responseEntity.getBody().getValue(),
+                assertEquals(Objects.
+                                requireNonNull(responseEntity.getBody())
+                                .getValue(),
                         registerValue));
         responseEntityList.forEach(
                 responseEntity -> assertEquals(
@@ -79,7 +83,9 @@ class ControlControllerTest {
 
         responseEntityList.forEach(Assertions::assertNotNull);
         responseEntityList.forEach(responseEntity ->
-                assertEquals(responseEntity.getBody().getValue(),
+                assertEquals(Objects
+                                .requireNonNull(responseEntity.getBody())
+                                .getValue(),
                         registerValue));
         responseEntityList.forEach(
                 responseEntity -> assertEquals(
