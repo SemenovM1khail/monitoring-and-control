@@ -1,8 +1,6 @@
-package ru.training.mc.core.api.configuration;
+package ru.training.mc.core.api.info;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter

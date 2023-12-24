@@ -13,4 +13,9 @@ public class FakeControlService implements ControlService {
     public void setRegisterValue(Integer address, Integer data) {
         fakeRegisters[address] = data;
     }
+
+    @Override
+    public Integer getRegisterValue(Integer address) {
+        return fakeRegisters[address];
+    }
 }

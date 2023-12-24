@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.training.mc.core.api.dto.ValueDto;
+import ru.training.mc.core.api.dto.FloatDto;
 import ru.training.mc.core.api.services.monitoring.service.impl.MonitoringService;
 
 @RestController
@@ -15,7 +15,7 @@ public class MonitorController {
     private final MonitoringService monitoringService;
 
     @GetMapping("/temperature/{unit}")
-    public ResponseEntity<ValueDto> readTemperature(@PathVariable String unit) {
+    public ResponseEntity<FloatDto> readTemperature(@PathVariable String unit) {
         return switch (unit.toLowerCase()) {
             case ("c") -> buildOkResponseWithValue(
                     monitoringService.getTemperatureInC());
@@ -26,7 +26,7 @@ public class MonitorController {
     }
 
     @GetMapping("/pressure/{unit}")
-    public ResponseEntity<ValueDto> readPressure(@PathVariable String unit) {
+    public ResponseEntity<FloatDto> readPressure(@PathVariable String unit) {
         return switch (unit.toLowerCase()) {
             case ("mmhg") -> buildOkResponseWithValue(
                     monitoringService.getPressureInMmHg());
@@ -36,10 +36,10 @@ public class MonitorController {
         };
     }
 
-    private ResponseEntity<ValueDto> buildOkResponseWithValue(Float value) {
+    private ResponseEntity<FloatDto> buildOkResponseWithValue(Float value) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(ValueDto.builder()
+                .body(FloatDto.builder()
                         .value(value)
                         .build());
     }

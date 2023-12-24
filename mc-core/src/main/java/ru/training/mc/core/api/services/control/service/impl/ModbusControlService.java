@@ -15,4 +15,9 @@ public class ModbusControlService implements ControlService {
     public void setRegisterValue(Integer address, Integer data) {
         modbusFacade.writeRegister(address, data);
     }
+
+    @Override
+    public Integer getRegisterValue(Integer address) {
+        return modbusFacade.readRegister(address);
+    }
 }
