@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.training.mc.core.api.dto.IntegerDto;
+import ru.training.mc.core.api.controllers.dto.IntegerDto;
 import ru.training.mc.core.api.services.control.service.impl.ControlService;
 
 @RestController

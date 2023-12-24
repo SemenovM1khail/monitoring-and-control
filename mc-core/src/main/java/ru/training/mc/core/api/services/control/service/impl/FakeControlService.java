@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @ConditionalOnProperty(value="api.modbus.connection.type", havingValue = "fake")
 public class FakeControlService implements ControlService {
 
-    Integer[] fakeRegisters = new Integer[4];
+    private final Integer[] fakeRegisters = new Integer[4];
 
     @Override
     public void setRegisterValue(Integer address, Integer data) {

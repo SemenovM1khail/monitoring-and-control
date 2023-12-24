@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.dto;
+package ru.training.mc.core.api.controllers.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
