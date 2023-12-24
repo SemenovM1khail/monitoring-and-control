@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.controllers.api.controllers;
+package ru.training.mc.core.api.controllers;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
