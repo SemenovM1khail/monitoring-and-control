@@ -2,9 +2,7 @@ package ru.training.mc.core.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import ru.training.mc.core.api.configuration.ServerConfiguration;
-
-import java.util.UUID;
+import ru.training.mc.core.api.configuration.ServerInformation;
 
 @Data
 @AllArgsConstructor
@@ -14,8 +12,8 @@ public class ValueDto {
 
     @NonNull
     @Builder.Default
-    @JsonProperty("server_id")
-    private UUID serverId = ServerConfiguration.serverUUID;
+    @JsonProperty("server_info")
+    private ServerInformation serverInfo = ServerInformation.getInstance();
 
     @NonNull
     private Float value;
