@@ -1,12 +1,7 @@
-package ru.training.mc.archive.store;
+package ru.training.mc.archive.store.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.util.ServerInfo;
-import ru.training.mc.archive.api.dto.ServerInfoDto;
 
 import java.time.Instant;
 
@@ -25,7 +20,9 @@ public class TelemetryEntity {
     @Builder.Default
     private Instant createdAt = Instant.now();
 
-//    private ServerInfoDto serverInfo;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ServerInfoEntity serverInfo;
 
     private Float temperature;
 
