@@ -1,8 +1,5 @@
 #!/bin/bash
-cd ./mc-archive
-mvn clean package -Dmaven.test.skip
-cd ../mc-core
-mvn clean package -Dmaven.test.skip
-cd ../mc-gateway
-mvn clean package -Dmaven.test.skip
+mvn clean package -Dmaven.test.skip -f ./mc-archive/pom.xml
+mvn clean package -Dmaven.test.skip -f ./mc-core/pom.xml
+mvn clean package -Dmaven.test.skip -f ./mc-gateway/pom.xml
 docker-compose build

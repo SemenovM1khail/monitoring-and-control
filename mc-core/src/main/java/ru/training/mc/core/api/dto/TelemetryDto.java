@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.controllers.dto;
+package ru.training.mc.core.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -8,7 +8,7 @@ import ru.training.mc.core.api.info.ServerInformation;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class IntegerDto {
+public class TelemetryDto {
 
     @NonNull
     @Builder.Default
@@ -16,6 +16,8 @@ public class IntegerDto {
     private ServerInformation serverInfo = ServerInformation.getInstance();
 
     @NonNull
-    private Integer value;
+    private Float temperature;
 
+    @NonNull
+    private Float pressure;
 }

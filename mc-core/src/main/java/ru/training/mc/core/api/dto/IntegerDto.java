@@ -1,4 +1,4 @@
-package ru.training.mc.core.api.controllers.dto;
+package ru.training.mc.core.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -8,7 +8,7 @@ import ru.training.mc.core.api.info.ServerInformation;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FloatDto {
+public class IntegerDto {
 
     @NonNull
     @Builder.Default
@@ -16,6 +16,6 @@ public class FloatDto {
     private ServerInformation serverInfo = ServerInformation.getInstance();
 
     @NonNull
-    private Float value;
+    private Integer value;
 
 }

@@ -7,8 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import ru.training.mc.core.api.controllers.MonitorController;
-import ru.training.mc.core.api.controllers.dto.FloatDto;
+import ru.training.mc.core.api.dto.FloatDto;
 import ru.training.mc.core.api.services.monitoring.service.impl.MonitoringService;
 
 

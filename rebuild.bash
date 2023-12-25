@@ -1,8 +1,5 @@
 #!/bin/bash
-cd ./mc-archive
-mvn clean package
-cd ../mc-core
-mvn clean package
-cd ../mc-gateway
-mvn clean package
+mvn clean package -f ./mc-archive/pom.xml
+mvn clean package -f ./mc-core/pom.xml
+mvn clean package -f ./mc-gateway/pom.xml
 docker-compose build
