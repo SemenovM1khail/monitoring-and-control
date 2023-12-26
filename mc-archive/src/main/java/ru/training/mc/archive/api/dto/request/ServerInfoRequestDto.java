@@ -1,16 +1,16 @@
 package ru.training.mc.archive.api.dto.request;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServerInfoDto {
+public class ServerInfoRequestDto {
 
-    @Id
     private Long id;
 
     private String location;

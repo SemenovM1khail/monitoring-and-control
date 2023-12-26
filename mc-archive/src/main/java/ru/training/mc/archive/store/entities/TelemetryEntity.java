@@ -20,9 +20,17 @@ public class TelemetryEntity {
     @Builder.Default
     private Instant createdAt = Instant.now();
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
-    private ServerInfoEntity serverInfo;
+    @JoinColumn(
+            name = "server_id",
+            referencedColumnName = "id",
+            insertable = false,
+            updatable = false)
+    @ManyToOne(targetEntity = ServerInfoEntity.class,
+            fetch = FetchType.EAGER)
+    private ServerInfoEntity car;
+
+    @Column(name = "server_id")
+    private Long serverId;
 
     private Float temperature;
 
