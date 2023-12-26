@@ -7,7 +7,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import ru.training.mc.archive.api.dto.request.ServerInfoRequestDto;
+import ru.training.mc.archive.api.dto.ServerInfoDto;
 import ru.training.mc.archive.api.dto.request.TelemetryRequestDto;
 import ru.training.mc.archive.store.factories.ServerInfoEntityFactory;
 import ru.training.mc.archive.store.factories.TelemetryEntityFactory;
@@ -62,7 +62,7 @@ public class ArchiverService {
                                         .requireNonNull(restTemplateBuilder
                                                 .build().getForObject(
                                                         CORE_ADDRESS_INFO,
-                                                        ServerInfoRequestDto.class))));
+                                                        ServerInfoDto.class))));
             }
 
             telemetryRepository
