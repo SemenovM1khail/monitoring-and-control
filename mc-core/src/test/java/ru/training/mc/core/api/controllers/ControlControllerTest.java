@@ -9,8 +9,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import ru.training.mc.core.api.dto.ValuesDto;
 import ru.training.mc.core.api.services.control.service.impl.ControlService;
-import ru.training.mc.core.api.dto.IntegerDto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +18,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
 class ControlControllerTest {
@@ -44,7 +46,7 @@ class ControlControllerTest {
                 .when(controlService)
                 .setRegisterValue(Mockito.anyInt(), Mockito.anyInt());
 
-        List<ResponseEntity<IntegerDto>> responseEntityList = new ArrayList<>();
+        List<ResponseEntity<ValuesDto<?>>> responseEntityList = new ArrayList<>();
         IntStream.range(0, registersQuantity)
                 .forEach(index -> responseEntityList
                         .add(controlController
@@ -54,7 +56,7 @@ class ControlControllerTest {
         responseEntityList.forEach(responseEntity ->
                 assertEquals(Objects.
                                 requireNonNull(responseEntity.getBody())
-                                .getValue(),
+                                .getValues().get(0),
                         registerValue));
         responseEntityList.forEach(
                 responseEntity -> assertEquals(
@@ -75,7 +77,7 @@ class ControlControllerTest {
                 .when(controlService)
                 .getRegisterValue(Mockito.anyInt());
 
-        List<ResponseEntity<IntegerDto>> responseEntityList = new ArrayList<>();
+        List<ResponseEntity<ValuesDto<?>>> responseEntityList = new ArrayList<>();
         IntStream.range(0, registersQuantity)
                 .forEach(index -> responseEntityList
                         .add(controlController
@@ -85,7 +87,7 @@ class ControlControllerTest {
         responseEntityList.forEach(responseEntity ->
                 assertEquals(Objects
                                 .requireNonNull(responseEntity.getBody())
-                                .getValue(),
+                                .getValues().get(0),
                         registerValue));
         responseEntityList.forEach(
                 responseEntity -> assertEquals(

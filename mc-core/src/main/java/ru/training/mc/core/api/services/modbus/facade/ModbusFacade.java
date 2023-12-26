@@ -24,8 +24,7 @@ public class ModbusFacade implements DisposableBean {
             sp.setDevice(portName);
             modBus = ModbusMasterFactory.createModbusMasterRTU(sp);
             modBus.connect();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -37,8 +36,7 @@ public class ModbusFacade implements DisposableBean {
         try {
             registerValue = modBus.readHoldingRegisters(
                     slaveAddress, registerAddress, 1)[0];
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
@@ -48,8 +46,7 @@ public class ModbusFacade implements DisposableBean {
     public void writeRegister(int address, int data) {
         try {
             modBus.writeSingleRegister(slaveAddress, address, data);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -58,8 +55,7 @@ public class ModbusFacade implements DisposableBean {
     public void destroy() {
         try {
             modBus.disconnect();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

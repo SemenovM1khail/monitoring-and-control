@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
-@ConditionalOnProperty(value="api.modbus.connection.type", havingValue = "fake")
+@ConditionalOnProperty(value = "api.modbus.connection.type", havingValue = "fake")
 public class FakeMonitoringService implements MonitoringService {
 
-    Random random = new Random();
+    final Random random = new Random();
 
     @Override
     public Float getTemperatureInC() {

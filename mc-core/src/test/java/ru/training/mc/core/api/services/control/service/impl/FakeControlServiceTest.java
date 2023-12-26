@@ -1,7 +1,6 @@
 package ru.training.mc.core.api.services.control.service.impl;
 
 import org.junit.jupiter.api.Test;
-import ru.training.mc.core.api.services.control.service.impl.FakeControlService;
 
 import java.util.stream.IntStream;
 
@@ -9,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FakeControlServiceTest {
 
-    FakeControlService fakeControlService = new FakeControlService();
+    final FakeControlService fakeControlService = new FakeControlService();
 
     @Test
     void setRegisters_GetValidRegistersValue() {

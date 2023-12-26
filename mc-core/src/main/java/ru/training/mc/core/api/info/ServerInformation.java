@@ -3,6 +3,7 @@ package ru.training.mc.core.api.info;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
+//TODO: вынести в конфиг файл
 @Getter
 public class ServerInformation {
 
@@ -15,7 +16,8 @@ public class ServerInformation {
 
     private final String DESCRIPTION = "Modbus master connected to arduino (modbus slave)";
 
-    private ServerInformation(){}
+    private ServerInformation() {
+    }
 
     public static ServerInformation getInstance() {
         return INSTANCE;

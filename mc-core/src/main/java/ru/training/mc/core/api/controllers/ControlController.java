@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.training.mc.core.api.dto.IntegerDto;
+import ru.training.mc.core.api.dto.ValuesDto;
 import ru.training.mc.core.api.services.control.service.impl.ControlService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/control")
@@ -15,25 +17,25 @@ public class ControlController {
     private final ControlService controlService;
 
     @PutMapping
-    public ResponseEntity<IntegerDto> setRegisterValue(
+    public ResponseEntity<ValuesDto<?>> setRegisterValue(
             @RequestParam("address") Integer address,
             @RequestParam("value") Integer value) {
         controlService.setRegisterValue(address, value);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(IntegerDto.builder()
-                        .value(value)
+                .body(ValuesDto.builder()
+                        .values(List.of(value))
                         .build());
     }
 
     @GetMapping("/read")
-    public ResponseEntity<IntegerDto> getRegisterValue(
+    public ResponseEntity<ValuesDto<?>> getRegisterValue(
             @RequestParam("address") Integer address) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(IntegerDto.builder()
-                        .value(controlService
-                                .getRegisterValue(address))
+                .body(ValuesDto.builder()
+                        .values(List.of(controlService
+                                .getRegisterValue(address)))
                         .build());
     }
 }

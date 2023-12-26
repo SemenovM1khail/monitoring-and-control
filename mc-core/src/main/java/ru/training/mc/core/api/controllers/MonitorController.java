@@ -3,10 +3,14 @@ package ru.training.mc.core.api.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ru.training.mc.core.api.dto.FloatDto;
-import ru.training.mc.core.api.dto.TelemetryDto;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ru.training.mc.core.api.dto.ValuesDto;
 import ru.training.mc.core.api.services.monitoring.service.impl.MonitoringService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -16,7 +20,8 @@ public class MonitorController {
     private final MonitoringService monitoringService;
 
     @GetMapping("/temperature/{unit}")
-    public ResponseEntity<FloatDto> readTemperature(@PathVariable String unit) {
+    public ResponseEntity<ValuesDto<?>> readTemperature(
+            @PathVariable String unit) {
         return switch (unit.toLowerCase()) {
             case ("c") -> buildOkResponseWithValue(
                     monitoringService.getTemperatureInC());
@@ -27,7 +32,8 @@ public class MonitorController {
     }
 
     @GetMapping("/pressure/{unit}")
-    public ResponseEntity<FloatDto> readPressure(@PathVariable String unit) {
+    public ResponseEntity<ValuesDto<?>> readPressure(
+            @PathVariable String unit) {
         return switch (unit.toLowerCase()) {
             case ("mmhg") -> buildOkResponseWithValue(
                     monitoringService.getPressureInMmHg());
@@ -38,23 +44,25 @@ public class MonitorController {
     }
 
     @GetMapping
-    public ResponseEntity<TelemetryDto> readCurrentData() {
+    public ResponseEntity<ValuesDto<?>> readCurrentData() {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(TelemetryDto.builder()
-                        .temperature(monitoringService
-                                .getTemperatureInC())
-                        .pressure(monitoringService
-                                .getPressureInMmHg())
+                .body(ValuesDto.builder()
+                        .values(List.of(
+                                monitoringService
+                                        .getTemperatureInC(),
+                                monitoringService
+                                        .getPressureInMmHg()))
                         .build());
-    };
+    }
 
 
-    private ResponseEntity<FloatDto> buildOkResponseWithValue(Float value) {
+    private ResponseEntity<ValuesDto<?>> buildOkResponseWithValue(
+            Float value) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(FloatDto.builder()
-                        .value(value)
+                .body(ValuesDto.builder()
+                        .values(List.of(value))
                         .build());
     }
 }

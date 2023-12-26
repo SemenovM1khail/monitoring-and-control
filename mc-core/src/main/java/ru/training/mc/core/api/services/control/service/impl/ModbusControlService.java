@@ -7,10 +7,11 @@ import ru.training.mc.core.api.services.modbus.facade.ModbusFacade;
 
 @Service
 @AllArgsConstructor
-@ConditionalOnProperty(value="api.modbus.connection.type", havingValue = "real")
+@ConditionalOnProperty(value = "api.modbus.connection.type", havingValue = "real")
 public class ModbusControlService implements ControlService {
 
     ModbusFacade modbusFacade;
+
     @Override
     public void setRegisterValue(Integer address, Integer data) {
         modbusFacade.writeRegister(address, data);

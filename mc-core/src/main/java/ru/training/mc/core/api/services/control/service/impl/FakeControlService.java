@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
-@ConditionalOnProperty(value="api.modbus.connection.type", havingValue = "fake")
+@ConditionalOnProperty(value = "api.modbus.connection.type", havingValue = "fake")
 public class FakeControlService implements ControlService {
 
     private final Integer[] fakeRegisters = new Integer[4];

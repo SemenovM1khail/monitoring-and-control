@@ -12,7 +12,7 @@ import ru.training.mc.core.api.services.modbus.facade.ModbusFacade;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doAnswer;
 
 @ExtendWith(MockitoExtension.class)
 public class ModbusControlServiceTests {
@@ -32,7 +32,8 @@ public class ModbusControlServiceTests {
             inMemoryRegisters[invocation
                     .getArgument(0, Integer.class)]
                     = invocation.getArgument(1, Integer.class);
-            return null;})
+            return null;
+        })
                 .when(modbusFacade)
                 .writeRegister(Mockito.anyInt(), Mockito.anyInt());
         doAnswer(invocation ->

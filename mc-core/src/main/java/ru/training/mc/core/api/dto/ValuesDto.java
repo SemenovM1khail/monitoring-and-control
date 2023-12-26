@@ -4,18 +4,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import ru.training.mc.core.api.info.ServerInformation;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class IntegerDto {
+public class ValuesDto<T> {
 
     @NonNull
     @Builder.Default
-    @JsonProperty("server_info")
-    private ServerInformation serverInfo = ServerInformation.getInstance();
+    @JsonProperty("server_id")
+    private Long serverId =
+            ServerInformation
+                    .getInstance()
+                    .getID();
 
     @NonNull
-    private Integer value;
-
+    private List<T> values;
 }
+

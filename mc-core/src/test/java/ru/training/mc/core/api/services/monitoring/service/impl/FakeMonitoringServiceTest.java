@@ -1,13 +1,13 @@
 package ru.training.mc.core.api.services.monitoring.service.impl;
 
 import org.junit.jupiter.api.Test;
-import ru.training.mc.core.api.services.monitoring.service.impl.FakeMonitoringService;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FakeMonitoringServiceTest {
 
-    FakeMonitoringService fakeMonitoringService =
+    final FakeMonitoringService fakeMonitoringService =
             new FakeMonitoringService();
 
     @Test
