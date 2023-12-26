@@ -3,6 +3,8 @@ package ru.training.mc.archive.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import  ru.training.mc.archive.store.entities.ServerInfoEntity;
+
 import java.time.Instant;
 
 @Entity
@@ -27,7 +29,7 @@ public class TelemetryEntity {
             updatable = false)
     @ManyToOne(targetEntity = ServerInfoEntity.class,
             fetch = FetchType.EAGER)
-    private ServerInfoEntity car;
+    private ServerInfoEntity serverInfo;
 
     @Column(name = "server_id")
     private Long serverId;
