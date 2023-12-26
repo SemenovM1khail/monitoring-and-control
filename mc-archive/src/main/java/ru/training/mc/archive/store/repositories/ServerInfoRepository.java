@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.training.mc.archive.store.entities.ServerInfoEntity;
 
 @Repository
-public interface ServerInfoRepository extends JpaRepository<ServerInfoEntity, Long> {
+public interface ServerInfoRepository
+        extends JpaRepository<ServerInfoEntity, Long> {
 
 }

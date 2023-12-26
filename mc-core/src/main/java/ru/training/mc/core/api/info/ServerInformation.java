@@ -10,11 +10,11 @@ public class ServerInformation {
     @JsonIgnore
     private static ServerInformation INSTANCE = new ServerInformation();
 
-    private final Long ID = 1L;
+    private final Long ID = 2L;
 
-    private final String LOCATION = "Moscow";
+    private final String LOCATION = "Severodvinsk";
 
-    private final String DESCRIPTION = "Modbus master connected to arduino (modbus slave)";
+    private final String DESCRIPTION = "Test server";
 
     private ServerInformation() {
     }

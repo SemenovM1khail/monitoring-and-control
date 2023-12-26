@@ -7,7 +7,7 @@ import ru.training.mc.archive.store.entities.ServerInfoEntity;
 @Component
 public class ServerInfoDtoFactory {
 
-    public ServerInfoDto makeServerResponseDtoFactory(
+    public ServerInfoDto makeServerInfoDtoFactory(
             ServerInfoEntity serverInfoEntity) {
         return ServerInfoDto.builder()
                 .id(serverInfoEntity.getId())

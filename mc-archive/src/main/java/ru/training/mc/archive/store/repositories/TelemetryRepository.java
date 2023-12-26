@@ -5,5 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.training.mc.archive.store.entities.TelemetryEntity;
 
 @Repository
-public interface TelemetryRepository extends JpaRepository<TelemetryEntity, Long> {
+public interface TelemetryRepository
+        extends JpaRepository<TelemetryEntity, Long> {
+
 }
