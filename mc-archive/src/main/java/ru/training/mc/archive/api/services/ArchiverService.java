@@ -35,10 +35,10 @@ public class ArchiverService {
 
     //TODO: вынести в конфиг
     private static final String CORE_ADDRESS_TELEMETRY
-            = "http://localhost:8082/api/monitor";
+            = "http://mc-core:8080/api/monitor";
 
     private static final String CORE_ADDRESS_INFO
-            = "http://localhost:8082/api/info";
+            = "http://mc-core:8080/api/info";
 
 
     @Scheduled(fixedRate = 5000)

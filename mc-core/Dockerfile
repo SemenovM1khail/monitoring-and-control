@@ -1,8 +1,5 @@
 FROM bellsoft/liberica-openjdk-debian:17
 
-RUN adduser --system app && addgroup --system app_group && adduser app app_group
-USER app
-
 WORKDIR /app
 
 COPY ./target/mc-core-v1.jar ./application.jar
