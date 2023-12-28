@@ -27,30 +27,31 @@ public class TelemetryController {
                 .findById(id)
                 .map(telemetryEntity ->
                         ResponseEntity.ok()
-                                .body(telemetryResponseDtoFactory.makeTelemetryResponseDto(
+                                .body(telemetryResponseDtoFactory
+                                        .makeTelemetryResponseDto(
                                                 telemetryEntity)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<TelemetryResponseDto>> readAllServerInfo() {
-        return ResponseEntity.ok()
-                .body(telemetryRepository
-                        .findAll()
-                        .stream()
-                        .map(telemetryEntity ->
-                                telemetryResponseDtoFactory
-                                        .makeTelemetryResponseDto(
-                                                telemetryEntity))
-                        .toList());
+        return buildResponseFromEntityList(
+                telemetryRepository
+                .findAll());
     }
 
-    //TODO: Выборка для конкретного сервера
-    //TODO: Сортировка при фильтрации
+    @GetMapping("/filter/server-id/{server-id}")
+    public ResponseEntity<List<TelemetryResponseDto>> readServerInfoByServerId(
+            @PathVariable("server-id") Long serverId) {
+        return buildResponseFromEntityList(
+                telemetryRepository
+                .findAllByServerId(serverId));
+    }
 
     @GetMapping("/filter/id")
     public ResponseEntity<List<TelemetryResponseDto>> readAllWithIdBetween(
-            @RequestParam("more") Long moreThen, @RequestParam("less") Long lessThen) {
+            @RequestParam("more") Long moreThen,
+            @RequestParam("less") Long lessThen) {
         return buildResponseFromEntityList(
                 telemetryRepository
                         .findAllByIdBetween(moreThen, lessThen));
@@ -58,7 +59,8 @@ public class TelemetryController {
 
     @GetMapping("/filter/server-id")
     public ResponseEntity<List<TelemetryResponseDto>> readAllWithServerIdBetween(
-            @RequestParam("more") Long moreThen, @RequestParam("less") Long lessThen) {
+            @RequestParam("more") Long moreThen,
+            @RequestParam("less") Long lessThen) {
         return buildResponseFromEntityList(
                 telemetryRepository
                         .findAllByServerIdBetween(moreThen, lessThen));
@@ -66,7 +68,8 @@ public class TelemetryController {
 
     @GetMapping("/filter/temperature")
     public ResponseEntity<List<TelemetryResponseDto>> readAllWithTempBetween(
-            @RequestParam("more") Float moreThen, @RequestParam("less") Float lessThen) {
+            @RequestParam("more") Float moreThen,
+            @RequestParam("less") Float lessThen) {
         return buildResponseFromEntityList(
                 telemetryRepository
                         .findAllByTemperatureBetween(
@@ -75,7 +78,8 @@ public class TelemetryController {
 
     @GetMapping("/filter/pressure")
     public ResponseEntity<List<TelemetryResponseDto>> readAllWithPressureBetween(
-            @RequestParam("more") Float moreThen, @RequestParam("less") Float lessThen) {
+            @RequestParam("more") Float moreThen,
+            @RequestParam("less") Float lessThen) {
         return buildResponseFromEntityList(
                 telemetryRepository
                         .findAllByPressureBetween(moreThen, lessThen));
@@ -83,7 +87,8 @@ public class TelemetryController {
 
     @GetMapping("/filter/created_at")
     public ResponseEntity<List<TelemetryResponseDto>> readAllWithCreatedAtBetween(
-            @RequestParam("after") Instant after, @RequestParam("before") Instant between) {
+            @RequestParam("after") Instant after,
+            @RequestParam("before") Instant between) {
         return buildResponseFromEntityList(
                 telemetryRepository
                         .findAllByCreatedAtBetween(after, between));

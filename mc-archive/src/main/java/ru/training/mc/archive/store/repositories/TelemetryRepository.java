@@ -14,6 +14,8 @@ public interface TelemetryRepository
     List<TelemetryEntity> findAllByIdBetween(
             Long moreThen, Long lessThen);
 
+    List<TelemetryEntity> findAllByServerId(Long serverId);
+
     List<TelemetryEntity> findAllByServerIdBetween(
             Long moreThen, Long lessThen);
 
