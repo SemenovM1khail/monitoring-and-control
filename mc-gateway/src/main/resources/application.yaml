@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: archive
+            uri: http://mc-archive:8080/api/archive/
+            predicates:
+              - Path=/api/archive/**
+          - id: core
+            uri: http://mc-core:8080/api/
+            predicates:
+              - Path=/api/**
+
+server:
+  port: 8080

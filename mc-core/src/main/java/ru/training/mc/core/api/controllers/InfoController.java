@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.training.mc.core.api.dto.ServerInfoDto;
 
 @RestController
-@RequestMapping("/api/info")
+@RequestMapping("/api/server-info")
 @AllArgsConstructor
 public class InfoController {
 
