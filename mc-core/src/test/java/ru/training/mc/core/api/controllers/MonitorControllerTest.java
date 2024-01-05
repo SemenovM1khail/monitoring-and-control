@@ -6,8 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import ru.training.mc.core.api.dto.ValuesDto;
 import ru.training.mc.core.api.services.monitoring.service.impl.MonitoringService;
 
 import java.util.Objects;
@@ -31,13 +29,15 @@ public class MonitorControllerTest {
         doReturn(mockedTemperature).when(monitoringService)
                 .getTemperatureInC();
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readTemperature("C");
+        var responseEntity = monitorController
+                .readTemperature("C");
 
         assertNotNull(responseEntity);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+        assertEquals(responseEntity.getStatusCode(),
+                HttpStatus.OK);
         assertEquals(Objects
-                        .requireNonNull(responseEntity.getBody())
+                        .requireNonNull(responseEntity
+                                .getBody())
                         .getValues()
                         .get(0),
                 mockedTemperature);
@@ -49,12 +49,14 @@ public class MonitorControllerTest {
         doReturn(mockedTemperature).when(monitoringService)
                 .getTemperatureInF();
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readTemperature("F");
+        var responseEntity = monitorController
+                .readTemperature("F");
 
         assertNotNull(responseEntity);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-        assertEquals(Objects.requireNonNull(
+        assertEquals(responseEntity.getStatusCode(),
+                HttpStatus.OK);
+        assertEquals(Objects
+                        .requireNonNull(
                                 responseEntity
                                         .getBody())
                         .getValues()
@@ -65,8 +67,8 @@ public class MonitorControllerTest {
     @Test
     void readTemperature_badRequestPath_ReturnsNotFound() {
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readTemperature("wrongPath");
+        var responseEntity = monitorController
+                .readTemperature("wrongPath");
 
         assertNotNull(responseEntity);
         assertEquals(responseEntity.getStatusCode(),
@@ -79,12 +81,14 @@ public class MonitorControllerTest {
         doReturn(mockedPressure).when(monitoringService)
                 .getPressureInPa();
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readPressure("Pa");
+        var responseEntity = monitorController
+                .readPressure("Pa");
 
         assertNotNull(responseEntity);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-        assertEquals(Objects.requireNonNull(
+        assertEquals(responseEntity.getStatusCode(),
+                HttpStatus.OK);
+        assertEquals(Objects
+                        .requireNonNull(
                                 responseEntity
                                         .getBody())
                         .getValues()
@@ -95,14 +99,16 @@ public class MonitorControllerTest {
     @Test
     void readPressure_inMmHg_ReturnsValidResponse() {
         Float mockedPressure = 747.5f;
-        doReturn(mockedPressure).when(monitoringService).getPressureInMmHg();
+        doReturn(mockedPressure).when(monitoringService)
+                .getPressureInMmHg();
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readPressure("mmHg");
+        var responseEntity = monitorController
+                .readPressure("mmHg");
 
         assertNotNull(responseEntity);
         assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-        assertEquals(Objects.requireNonNull(
+        assertEquals(Objects
+                        .requireNonNull(
                                 responseEntity
                                         .getBody())
                         .getValues()
@@ -111,7 +117,7 @@ public class MonitorControllerTest {
     }
 
     @Test
-    void readTelemetry_ReturnsValidResponse() {
+    void readCurrentData_ReturnsValidResponse() {
         Float mockedTemperature = 30.2f;
         Float mockedPressure = 747.5f;
         doReturn(mockedTemperature).when(monitoringService)
@@ -119,8 +125,8 @@ public class MonitorControllerTest {
         doReturn(mockedPressure).when(monitoringService)
                 .getPressureInMmHg();
 
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readCurrentData();
+        var responseEntity = monitorController
+                .readCurrentData();
 
         assertNotNull(responseEntity);
         assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
@@ -138,11 +144,11 @@ public class MonitorControllerTest {
 
     @Test
     void readPressure_badRequestPath_ReturnsNotFound() {
-
-        ResponseEntity<ValuesDto<?>> responseEntity
-                = monitorController.readPressure("wrongPath");
+        var responseEntity = monitorController
+                .readPressure("wrongPath");
 
         assertNotNull(responseEntity);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.NOT_FOUND);
+        assertEquals(responseEntity.getStatusCode(),
+                HttpStatus.NOT_FOUND);
     }
 }

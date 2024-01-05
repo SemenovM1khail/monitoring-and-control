@@ -37,6 +37,8 @@ class ControlControllerTest {
         int registersQuantity = 4;
         int registerValue = Short.MAX_VALUE * 2;
         int[] inMemoryRegisters = new int[registersQuantity];
+        int[] arrayForComparison = new int[registersQuantity];
+        Arrays.fill(arrayForComparison, registerValue);
         doAnswer(invocation -> {
             inMemoryRegisters[invocation
                     .getArgument(0, Integer.class)]
@@ -45,17 +47,20 @@ class ControlControllerTest {
         })
                 .when(controlService)
                 .setRegisterValue(Mockito.anyInt(), Mockito.anyInt());
+        List<ResponseEntity<ValuesDto<?>>> responseEntityList
+                = new ArrayList<>();
 
-        List<ResponseEntity<ValuesDto<?>>> responseEntityList = new ArrayList<>();
         IntStream.range(0, registersQuantity)
                 .forEach(index -> responseEntityList
                         .add(controlController
-                                .setRegisterValue(index, registerValue)));
+                                .setRegisterValue(
+                                        index, registerValue)));
 
         responseEntityList.forEach(Assertions::assertNotNull);
         responseEntityList.forEach(responseEntity ->
                 assertEquals(Objects.
-                                requireNonNull(responseEntity.getBody())
+                                requireNonNull(responseEntity
+                                        .getBody())
                                 .getValues().get(0),
                         registerValue));
         responseEntityList.forEach(
@@ -63,8 +68,6 @@ class ControlControllerTest {
                         responseEntity.getStatusCode(),
                         HttpStatus.OK));
         assertEquals(registersQuantity, responseEntityList.size());
-        int[] arrayForComparison = new int[registersQuantity];
-        Arrays.fill(arrayForComparison, registerValue);
         assertArrayEquals(arrayForComparison,
                 inMemoryRegisters);
     }
@@ -77,7 +80,8 @@ class ControlControllerTest {
                 .when(controlService)
                 .getRegisterValue(Mockito.anyInt());
 
-        List<ResponseEntity<ValuesDto<?>>> responseEntityList = new ArrayList<>();
+        List<ResponseEntity<ValuesDto<?>>> responseEntityList
+                = new ArrayList<>();
         IntStream.range(0, registersQuantity)
                 .forEach(index -> responseEntityList
                         .add(controlController
@@ -86,7 +90,8 @@ class ControlControllerTest {
         responseEntityList.forEach(Assertions::assertNotNull);
         responseEntityList.forEach(responseEntity ->
                 assertEquals(Objects
-                                .requireNonNull(responseEntity.getBody())
+                                .requireNonNull(responseEntity
+                                        .getBody())
                                 .getValues().get(0),
                         registerValue));
         responseEntityList.forEach(
