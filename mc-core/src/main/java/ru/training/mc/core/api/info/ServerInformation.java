@@ -5,7 +5,7 @@ import lombok.Getter;
 
 //TODO: вынести в конфиг файл
 @Getter
-public class ServerInformation {
+public final class ServerInformation {
 
     @JsonIgnore
     private static ServerInformation INSTANCE = new ServerInformation();

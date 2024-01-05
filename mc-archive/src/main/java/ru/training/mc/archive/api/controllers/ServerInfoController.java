@@ -2,7 +2,10 @@ package ru.training.mc.archive.api.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.training.mc.archive.api.dto.ServerInfoDto;
 import ru.training.mc.archive.api.dto.factories.ServerInfoDtoFactory;
 import ru.training.mc.archive.store.repositories.ServerInfoRepository;
@@ -26,7 +29,7 @@ public class ServerInfoController {
                 .map(serverInfoEntity ->
                         ResponseEntity.ok()
                                 .body(serverInfoDtoFactory
-                                        .makeServerInfoDtoFactory(
+                                        .makeServerInfoDto(
                                                 serverInfoEntity)))
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -39,7 +42,7 @@ public class ServerInfoController {
                         .stream()
                         .map(serverInfoEntity ->
                                 serverInfoDtoFactory
-                                        .makeServerInfoDtoFactory(
+                                        .makeServerInfoDto(
                                                 serverInfoEntity))
                         .toList());
     }

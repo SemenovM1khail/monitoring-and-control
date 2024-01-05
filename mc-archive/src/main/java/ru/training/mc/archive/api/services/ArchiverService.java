@@ -24,14 +24,10 @@ import java.util.Objects;
 public class ArchiverService {
 
     private RestTemplateBuilder restTemplateBuilder;
-
     private TelemetryRepository telemetryRepository;
-
     private ServerInfoRepository serverInfoRepository;
-
-    private ServerInfoEntityFactory serverInfoEntityFactory;
-
     private TelemetryEntityFactory telemetryEntityFactory;
+    private ServerInfoEntityFactory serverInfoEntityFactory;
 
     //TODO: вынести в конфиг
     private static final String CORE_ADDRESS_TELEMETRY
@@ -74,6 +70,4 @@ public class ArchiverService {
             System.out.println(e.getMessage());
         }
     }
-
-
 }

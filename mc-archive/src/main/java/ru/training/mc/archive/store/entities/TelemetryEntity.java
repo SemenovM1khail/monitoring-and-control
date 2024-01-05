@@ -3,8 +3,6 @@ package ru.training.mc.archive.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import  ru.training.mc.archive.store.entities.ServerInfoEntity;
-
 import java.time.Instant;
 
 @Entity
