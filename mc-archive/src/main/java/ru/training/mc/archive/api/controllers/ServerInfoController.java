@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/archive/server/read")
+@RequestMapping("/api/archive/server")
 public class ServerInfoController {
 
     ServerInfoRepository serverInfoRepository;

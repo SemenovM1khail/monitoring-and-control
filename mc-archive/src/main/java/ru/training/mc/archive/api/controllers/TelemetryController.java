@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/archive/data/read")
+@RequestMapping("/api/archive/data")
 public class TelemetryController {
 
     TelemetryRepository telemetryRepository;
